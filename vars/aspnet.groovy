@@ -1,6 +1,9 @@
 def call(String param = 'test') {
  pipeline {
     agent any
+     parameters {
+        string(defaultValue: 'us-west-2', description: 'Provide your region', name: 'REGION')
+    }
     stages {
         stage('Build') {
             steps {
