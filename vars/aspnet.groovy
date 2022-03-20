@@ -21,6 +21,14 @@ def call(String param = 'test') {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                def msbuildHome = tool 'Default MSBuild'
+                def scannerHome = tool 'SonarScanner for MSBuild'
+        withSonarQubeEnv() {
+      bat "\"${scannerHome}\\SonarScanner.MSBuild.exe\" begin /k:\"SahajVikas_SahajPayroll\""
+      bat "\"${msbuildHome}\\MSBuild.exe\" /t:Rebuild"
+      bat "\"${scannerHome}\\SonarScanner.MSBuild.exe\" end"
+        } 
+             
             }
         }
         stage('Deploy') {
