@@ -2,7 +2,7 @@ def call(String param = 'test') {
  pipeline {
     agent any
      parameters {
-        string(defaultValue: 'us-west-2', description: 'Provide your region', name: 'REGION')
+        string(defaultValue: 'XXXX', description: 'Server URL to deploy', name: 'SH_SERVER_NAME')
     }
     stages {
         stage('Build') {
