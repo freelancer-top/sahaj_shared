@@ -1,4 +1,4 @@
-def call(String param = 'test') {
+def call(jenkinParams: []) {
  pipeline {
     agent any
      parameters {
@@ -9,6 +9,7 @@ def call(String param = 'test') {
         stage('Build') {
             steps {
                 echo 'Building..'                
+                print("${jenkinParams}")
 
             bat """                
                 dir
