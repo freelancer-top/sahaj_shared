@@ -1,4 +1,4 @@
-def call(jenkinParams: []) {
+def call(Map jenkinParams = [:]) {
  pipeline {
     agent any
      parameters {
@@ -12,6 +12,7 @@ def call(jenkinParams: []) {
                 print("${jenkinParams}")
 
             bat """                
+                @echo off
                 dir
                 nuget.exe restore SahajPayroll.sln
                 msbuild /t:Rebuild /t:restore                 
