@@ -14,7 +14,7 @@ def call(Map jenkinParams = [:]) {
             bat """                
                 @echo off
                 dir
-                nuget.exe restore SahajPayroll.sln
+                nuget.exe restore ${jenkinParams.solutionFile}
                 msbuild /t:Rebuild /t:restore                 
               """                 
                 
