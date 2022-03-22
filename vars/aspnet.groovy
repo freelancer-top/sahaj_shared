@@ -12,6 +12,7 @@ def call(String param = 'test') {
 
             bat """                
                 dir
+                D:\softwares\nuget.exe restore SahajPayroll.sln
                 msbuild /t:Rebuild /t:restore                 
               """                 
                 
