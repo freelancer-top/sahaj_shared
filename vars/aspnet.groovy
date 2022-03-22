@@ -12,7 +12,8 @@ def call(String param = 'test') {
 
             bat """                
                 dir
-                msbuild SahajPayroll.sln
+                msbuild -t:restore
+                msbuild
               """                 
                 
                 
