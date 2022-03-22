@@ -12,8 +12,7 @@ def call(String param = 'test') {
 
             bat """                
                 dir
-                msbuild -t:restore
-                msbuild
+                msbuild /t:Rebuild /t:restore                 
               """                 
                 
                 
