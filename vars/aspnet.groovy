@@ -38,7 +38,11 @@ def call(Map jenkinParams = [:]) {
                 beforeAgent true
             } 
             steps {
-                echo 'quality check..'             
+                echo 'quality check..'     
+                 script
+                {
+                    helper.runQualityGate(buildParam)
+                }        
              
             }
         }
