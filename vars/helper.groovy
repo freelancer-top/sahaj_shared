@@ -33,7 +33,7 @@ def runQualityGate(buildParam)
 
 def deloyCode(buildParam)
 {
-/
+
 print ( "${buildParam}");
         bat """                
                 @echo off
