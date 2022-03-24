@@ -67,7 +67,7 @@ def runCoreTestCases(buildParam)
     dotnet test ${buildParam.jenkinParams.solutionFile}
   """     
 
-  */
+
 }
 dotnet test eShopOnWeb.sln
 
