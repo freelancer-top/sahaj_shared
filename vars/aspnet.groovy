@@ -1,6 +1,6 @@
 def call(Map jenkinParams = [:]) {
 
-    def buildParam = [runQualityCheck: true, runTestCases: false, build : [type: 'asp',buildOutFolder='buildOut']];
+    def buildParam = [runQualityCheck: true, runTestCases: false, build : [type: 'asp',buildOutFolder:'buildOut']];
  pipeline {
     agent any
      parameters {
