@@ -51,13 +51,13 @@ def buildCore(buildParam)
 def runQualityGate(buildParam)
 {
 ///d:sonar.branch.name=${BRANCH_NAME} : Developer Edition
-//env.BRANCH_NAME
+//env.BRANCH_NAME SahajVikas_SahajPayroll
 
 def sonarName ="${env.JOB_NAME}".replace("/","_");
  print("name used ${sonarName}")
        bat """ 
        @echo off 
-    SonarScanner.MSBuild.exe /k:"SahajVikas_SahajPayroll" /n:"${sonarName}" begin /d:sonar.host.url="http://localhost:9000"  /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
+    SonarScanner.MSBuild.exe /k:"${sonarName}" /n:"${sonarName}" begin /d:sonar.host.url="http://localhost:9000"  /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
     "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Msbuild\\Current\\Bin\\amd64\\MsBuild.exe" ${buildParam.jenkinParams.solutionFile}
     SonarScanner.MSBuild.exe end /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
   """     
