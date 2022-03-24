@@ -36,9 +36,10 @@ def buildAspNet(buildParam)
 
 def buildCore(buildParam)
 {
-        bat """                
-                @echo off
-                dir
+    //@echo off
+    //dir
+        bat """               
+                
                 nuget.exe restore ${buildParam.jenkinParams.solutionFile}
                 dotnet build ${buildParam.jenkinParams.solutionFile} --no-restore -c Release 
                 dotnet publish ${buildParam.jenkinParams.solutionFile} --no-restore -c Release -o ${buildParam.build.buildOutFolder}
