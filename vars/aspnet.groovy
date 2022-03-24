@@ -1,6 +1,6 @@
 def call(Map jenkinParams = [:]) {
 
-    def buildParam = [runQualityCheck: true, runTestCases: false];
+    def buildParam = [runQualityCheck: true, runTestCases: false, build : [type: 'asp',buildOutFolder='buildOut']];
  pipeline {
     agent any
      parameters {
@@ -19,6 +19,29 @@ def call(Map jenkinParams = [:]) {
             }
         }
         stage('Build AspNet') {
+             when {
+                expression {
+                    return buildParam.buildAspNet
+                }
+                beforeAgent true
+            } 
+            steps {
+                script
+                {
+                echo 'Building..'                
+                print("${jenkinParams}")
+                helper.buildAspNet(buildParam)
+                }
+                stash(name:"stash-build-out", includes: "${buildParam.build.buildOutFolder}\\**\\**")
+            }
+        }
+        stage('Build dotNetCore') {
+             when {
+                expression {
+                    return buildParam.buildAspNet
+                }
+                beforeAgent true
+            } 
             steps {
                 script
                 {
