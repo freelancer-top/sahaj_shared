@@ -59,6 +59,10 @@ def call(Map jenkinParams = [:]) {
             steps {
                 unstash("stash-build-out")
                 echo 'Deploying....'
+                script
+                {
+                    helper.deloyCode(buildParam)
+                }
             }
         }
     }
