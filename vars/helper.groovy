@@ -69,7 +69,7 @@ def runCoreTestCases(buildParam)
 
  step([$class: 'MSTestPublisher', testResultsFile:"**/**/**/unit_tests.xml", failOnError: true, keepLongStdio: true])
 
-//step([$class: 'MSTestPublisher', testResultsFile:"**/*.trx", failOnError: true, keepLongStdio: true])
+//  step([$class: 'MSTestPublisher', testResultsFile:"**/*.trx", failOnError: true, keepLongStdio: true])
 
 }
 dotnet test eShopOnWeb.sln
