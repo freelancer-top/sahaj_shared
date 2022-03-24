@@ -51,8 +51,8 @@ def runQualityGate(buildParam)
 
        bat """ 
        @echo off 
-    SonarScanner.MSBuild.exe /k:'test_key' /n:'testname' begin /d:sonar.host.url="http://localhost:9000" /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
-    MsBuild.exe ${buildParam.jenkinParams.solutionFile}
+    SonarScanner.MSBuild.exe /k:"SahajVikas_SahajPayroll" /n:'testname' begin /d:sonar.host.url="http://localhost:9000" /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
+    "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Msbuild\\Current\\Bin\\amd64\\MsBuild.exe" ${buildParam.jenkinParams.solutionFile}
     SonarScanner.MSBuild.exe end /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
   """     
 
