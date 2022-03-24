@@ -2,7 +2,7 @@ package vars
 
 def configure (buildParam , jenkinParams)
 {
-buildPardiram.jenkinParams = jenkinParams;
+buildParam.jenkinParams = jenkinParams;
 
 }
 
