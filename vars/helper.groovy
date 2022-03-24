@@ -64,9 +64,12 @@ def runCoreTestCases(buildParam)
 
        bat """ 
        @echo off 
-    dotnet test ${buildParam.jenkinParams.solutionFile}
+    dotnet test ${buildParam.jenkinParams.solutionFile} --logger "trx;LogFileName=unit_tests.xml"
   """     
 
+ step([$class: 'MSTestPublisher', testResultsFile:"**/**/**/unit_tests.xml", failOnError: true, keepLongStdio: true])
+
+//step([$class: 'MSTestPublisher', testResultsFile:"**/*.trx", failOnError: true, keepLongStdio: true])
 
 }
 dotnet test eShopOnWeb.sln
