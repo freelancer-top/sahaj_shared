@@ -13,7 +13,7 @@ def buildAspNet(buildParam)
                 @echo off
                 dir
                 nuget.exe restore ${buildParam.jenkinParams.solutionFile}
-                msbuild /t:Rebuild /t:restore  /property:Configuration=Release 
+                msbuild /t:Rebuild /t:restore
                 msbuild /property:Configuration=Release
               """     
 } 
