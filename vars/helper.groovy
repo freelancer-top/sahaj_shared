@@ -5,6 +5,8 @@ def configure (buildParam , jenkinParams)
 buildParam.jenkinParams = jenkinParams;
 if (buildParam.jenkinParams.runTestCases)
         buildParam.runTestCases=buildParam.jenkinParams.runTestCases
+
+ currentBuild.displayName= "${env.BRANCH_NAME} -> ${env.BUILD_NUMBER}"       
 }
 
 
