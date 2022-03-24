@@ -49,14 +49,14 @@ def buildCore(buildParam)
 def runQualityGate(buildParam)
 {
 
-/*       bat """ 
+       bat """ 
        @echo off 
-    SonarScanner.MSBuild.exe begin /d:sonar.host.url="http://localhost:9000" /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
+    SonarScanner.MSBuild.exe /k:'test-key' /n:'test-name' begin /d:sonar.host.url="http://localhost:9000" /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
     MsBuild.exe /t:Rebuild
     SonarScanner.MSBuild.exe end /d:sonar.login="ef87ded16e4176063843cea7f6797fb480cf3183"
   """     
 
-  */
+  
 }
 
 def runCoreTestCases(buildParam)
