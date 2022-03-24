@@ -1,6 +1,6 @@
 def call(Map jenkinParams = [:]) {
 
-    def buildParam = [stage: 'tbd'];
+    def buildParam = [runQualityCheck: true, runTestCases: false];
  pipeline {
     agent any
      parameters {
@@ -18,7 +18,7 @@ def call(Map jenkinParams = [:]) {
                 
             }
         }
-        stage('Build') {
+        stage('Build AspNet') {
             steps {
                 script
                 {
@@ -28,12 +28,32 @@ def call(Map jenkinParams = [:]) {
                 }
             }
         }
+
+        stage('Quaity Check ') {
+            when {
+                expression {
+                    return buildParam.runQualityCheck
+                }
+                beforeAgent true
+            } 
+            steps {
+                echo 'quality check..'             
+             
+            }
+        }
         stage('Test') {
+            when {
+                expression {
+                    return buildParam.runTestCases
+                }
+            } 
             steps {
                 echo 'Testing..'             
              
             }
         }
+
+
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
