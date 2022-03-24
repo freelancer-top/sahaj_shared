@@ -21,7 +21,7 @@ def call(Map jenkinParams = [:]) {
         stage('Build AspNet') {
              when {
                 expression {
-                    return buildParam.buildAspNet
+                    return buildParam.build.type == "asp"
                 }
                 beforeAgent true
             } 
@@ -38,7 +38,7 @@ def call(Map jenkinParams = [:]) {
         stage('Build dotNetCore') {
              when {
                 expression {
-                    return buildParam.buildAspNet
+                    return buildParam.build.type == "core"
                 }
                 beforeAgent true
             } 
