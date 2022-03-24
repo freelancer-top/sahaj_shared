@@ -7,6 +7,7 @@ if (buildParam.jenkinParams.runTestCases)
         buildParam.runTestCases=buildParam.jenkinParams.runTestCases
 }
 
+
 def buildAspNet(buildParam)
 {
         bat """                
