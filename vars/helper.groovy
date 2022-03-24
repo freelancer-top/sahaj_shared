@@ -38,11 +38,12 @@ def buildCore(buildParam)
 {
     //@echo off
     //dir
+    //dotnet publish ${buildParam.jenkinParams.solutionFile} --no-restore -c Release -o ${buildParam.build.buildOutFolder}
         bat """               
                 
                 nuget.exe restore ${buildParam.jenkinParams.solutionFile}
-                dotnet build ${buildParam.jenkinParams.solutionFile} --no-restore -c Release 
-                dotnet publish ${buildParam.jenkinParams.solutionFile} --no-restore -c Release -o ${buildParam.build.buildOutFolder}
+                dotnet build ${buildParam.jenkinParams.solutionFile} --no-restore -c Release -o ${buildParam.build.buildOutFolder}
+                
               """     
 }
 def runQualityGate(buildParam)
@@ -57,6 +58,18 @@ def runQualityGate(buildParam)
 
   */
 }
+
+def runCoreTestCases(buildParam)
+{
+
+       bat """ 
+       @echo off 
+    dotnet test ${buildParam.jenkinParams.solutionFile}
+  """     
+
+  */
+}
+dotnet test eShopOnWeb.sln
 
 def deloyCode(buildParam)
 {

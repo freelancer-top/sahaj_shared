@@ -76,7 +76,11 @@ def call(Map jenkinParams = [:]) {
                 }
             } 
             steps {
-                echo 'Testing..'             
+                echo 'Testing..'
+                 script
+                {
+                    helper.runCoreTestCases(buildParam)
+                }              
              
             }
         }
