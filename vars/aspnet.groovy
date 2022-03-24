@@ -1,4 +1,6 @@
 def call(Map jenkinParams = [:]) {
+
+    def buildParam = [stage: 'tbd'];
  pipeline {
     agent any
      parameters {
@@ -6,19 +8,18 @@ def call(Map jenkinParams = [:]) {
         choice(name: 'SH_ENV', choices: ['dev', 'uat', 'prod'], description: 'Choose the enviornment') 
     }
     stages {
+          stage('Configure') {
+            steps {
+                echo 'Configure..'                                
+                helper.configure(buildParam,jenkinParams)
+                
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'                
                 print("${jenkinParams}")
-
-            bat """                
-                @echo off
-                dir
-                nuget.exe restore ${jenkinParams.solutionFile}
-                msbuild /t:Rebuild /t:restore                 
-              """                 
-                
-                
+                helper.buildAspNet(buildParam)
             }
         }
         stage('Test') {
