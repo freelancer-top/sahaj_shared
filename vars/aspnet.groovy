@@ -10,16 +10,22 @@ def call(Map jenkinParams = [:]) {
     stages {
           stage('Configure') {
             steps {
+                script 
+                {
                 echo 'Configure..'                                
                 helper.configure(buildParam,jenkinParams)
+                }
                 
             }
         }
         stage('Build') {
             steps {
+                script
+                {
                 echo 'Building..'                
                 print("${jenkinParams}")
                 helper.buildAspNet(buildParam)
+                }
             }
         }
         stage('Test') {
