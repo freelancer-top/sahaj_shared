@@ -31,8 +31,8 @@ def deloyCode(buildParam)
 //@echo off
         bat """                
                 
-                rmdir /s /q "${buildParam.jenkinParams.build.outApp.deployFolder}/*"
-                Xcopy ${buildParam.jenkinParams.build.outApp}/bin "${buildParam.jenkinParams.build.outApp.deployFolder}" /E /H /C /I
+                rmdir /s /q "${buildParam.jenkinParams.build.deployFolder}/*"
+                Xcopy ${buildParam.jenkinParams.build.outApp}/bin "${buildParam.jenkinParams.build.deployFolder}" /E /H /C /I
 
               """  
 
