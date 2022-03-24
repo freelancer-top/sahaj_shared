@@ -49,7 +49,7 @@ def call(Map jenkinParams = [:]) {
                 print("${jenkinParams}")
                 helper.buildCore(buildParam)
                 }
-                stash(name:"stash-build-out", includes: "${jenkinParams.build.outApp}/bin/**/**")
+                stash(name:"stash-build-out", includes: "${jenkinParams.build.outApp}\\**\\**")
             }
         }
 
