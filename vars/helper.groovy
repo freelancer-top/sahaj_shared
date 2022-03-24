@@ -29,6 +29,7 @@ def runQualityGate(buildParam)
 def deloyCode(buildParam)
 {
 //@echo off
+print ( "${buildParam}");
         bat """                
                 
                 del /s /q "${buildParam.jenkinParams.build.deployFolder}/*"
