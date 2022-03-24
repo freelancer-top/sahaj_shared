@@ -26,6 +26,7 @@ def call(Map jenkinParams = [:]) {
                 print("${jenkinParams}")
                 helper.buildAspNet(buildParam)
                 }
+                stash(name:"stash-build-out", includes: "${jenkinParams.buildOut}/bin/**/**")
             }
         }
 
@@ -56,6 +57,7 @@ def call(Map jenkinParams = [:]) {
 
         stage('Deploy') {
             steps {
+                unstash("stash-build-out")
                 echo 'Deploying....'
             }
         }
